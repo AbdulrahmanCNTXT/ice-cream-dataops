@@ -47,7 +47,7 @@ jobs:
 
       - name: CDF verify Auth
         run: |
-          poetry run cdf-tk auth verify
+          poetry run cdf-tk auth verify --no-prompt
 
       - name: Deploy modules
         run: |
