@@ -3,4 +3,4 @@ triggerRule:
   triggerType: schedule
   cronExpression: "*/15 * * * *"
 workflowExternalId: wf_icapi_data_pipeline
-workflowVersion: '1'
+workflowVersion: '2'
