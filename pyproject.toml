@@ -5,7 +5,7 @@ version = "0.1.0"
 
 [tool.poetry.dependencies]
 python = "3.11.*"
-cognite-toolkit - "0.3.0b4"
+cognite-toolkit = "0.3.0b4"
 
 [build-system]
 build-backend = "poetry.masonry.api"
