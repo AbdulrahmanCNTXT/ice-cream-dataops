@@ -40,7 +40,7 @@ jobs:
         run: poetry install --no-interaction
       - name: Build modules
         run: |
-          poetry run cdf-tk build
+          poetry run cdf-tk build --env=prod
       - name: Deploy modules
         run: |
-          poetry run cdf-tk deploy
+          poetry run cdf-tk deploy --env=prod
