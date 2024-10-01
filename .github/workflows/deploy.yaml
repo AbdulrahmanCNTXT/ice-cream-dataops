@@ -1,0 +1,46 @@
+name: 'Deploy'
+on:
+  push:
+    branches:
+        - main
+env:
+  PYTHON_VERSION: 3.11
+  CDF_PROJECT: cdf-bootcamp-10-prod
+  LOGIN_FLOW: client_credentials
+  CDF_CLUSTER: westeurope-1
+  IDP_CLIENT_ID: 2e8bcba2-c36f-47ab-91c4-5ac5bb2e724c
+  IDP_CLIENT_SECRET: ${{ secrets.IDP_CLIENT_SECRET }}
+  # IDP_CLIENT_SECRET: gym8Q~BGR71jFRr.ZvwlT6wJqw1znR83CAUUhcY2
+  DATA_PIPELINE_OEE_CLIENT_ID: 930f8229-ab1b-4aa4-8457-1a1f9a558444
+  DATA_PIPELINE_OEE_CLIENT_SECRET: ${{ secrets.DATA_PIPELINE_OEE_CLIENT_SECRET }}
+  ICAPI_EXTRACTORS_CLIENT_ID: 650bddf7-59c1-4a1e-96fb-e7de6dad7446
+  ICAPI_EXTRACTORS_CLIENT_SECRET: ${{ secrets.ICAPI_EXTRACTORS_CLIENT_SECRET }}
+  IDP_TENANT_ID: 16e3985b-ebe8-4e24-9da4-933e21a9fc81
+  IDP_TOKEN_URL: https://login.microsoftonline.com/16e3985b-ebe8-4e24-9da4-933e21a9fc81/oauth2/v2.0/token
+  CDF_URL: https://westeurope-1.cognitedata.com
+  IDP_SCOPES: https://westeurope-1.cognitedata.com/.default
+
+jobs:
+  build:
+    name: Update python-default.lock
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+            # install & configure poetry
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+      - name: Install project
+        run: poetry install --no-interaction
+      - name: Build modules
+        run: |
+          cdf-tk build
+      - name: Deploy modules
+        run: |
+          cdf-tk deploy
