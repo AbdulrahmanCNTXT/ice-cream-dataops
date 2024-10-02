@@ -24,8 +24,8 @@ def handle(client: CogniteClient, data: Dict[str, Any] = {}) -> None:
 
 @retry(tries=5, delay=5)
 def process_site(client, data_set_id, lookback_minutes, site):
-    assets = client.assets.list(asset_subtree_external_ids=site.lower(), limit=None)
-    timeseries = client.time_series.list(asset_subtree_external_ids=site.lower(), limit=None)
+    assets = client.assets.list(asset_subtree_external_ids=site.lower().replace(" ", "_"), limit=None)
+    timeseries = client.time_series.list(asset_subtree_external_ids=site.lower().replace(" ", "_"), limit=None)
     external_ids = [ts.external_id for ts in timeseries]
     all_latest_dps = client.time_series.data.retrieve_latest(external_id=external_ids)
 
