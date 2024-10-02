@@ -15,7 +15,7 @@ env:
   IDP_CLIENT_SECRET: ${{ secrets.IDP_CLIENT_SECRET }}
   DATA_PIPELINE_OEE_CLIENT_ID: 930f8229-ab1b-4aa4-8457-1a1f9a558444
   DATA_PIPELINE_OEE_CLIENT_SECRET: ${{ secrets.DATA_PIPELINE_OEE_CLIENT_SECRET }}
-  ICAPI_EXTRACTORS_CLIENT_ID: 650bddf7-59c1-4a1e-96fb-e7de6dad7446
+  ICAPI_EXTRACTORS_CLIENT_ID: 5b4d71e0-8c43-46d0-9291-04533070ec64
   ICAPI_EXTRACTORS_CLIENT_SECRET: ${{ secrets.ICAPI_EXTRACTORS_CLIENT_SECRET }}
   IDP_TENANT_ID: 16e3985b-ebe8-4e24-9da4-933e21a9fc81
   IDP_TOKEN_URL: https://login.microsoftonline.com/16e3985b-ebe8-4e24-9da4-933e21a9fc81/oauth2/v2.0/token
@@ -52,10 +52,6 @@ jobs:
       - name: Build modules
         run: |
           poetry run cdf-tk build --env=prod 
-
-      - name: Deploy modules
-        run: |
-          poetry run cdf-tk deploy --env=prod --verbose --dry-run
 
       - name: Deploy modules
         run: |
