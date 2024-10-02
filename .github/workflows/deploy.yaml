@@ -13,7 +13,6 @@ env:
   CDF_CLUSTER: westeurope-1
   IDP_CLIENT_ID: ac72ca50-0b5e-4e9d-af8c-9203cbdd900f
   IDP_CLIENT_SECRET: ${{ secrets.IDP_CLIENT_SECRET }}
-  # IDP_CLIENT_SECRET: gym8Q~BGR71jFRr.ZvwlT6wJqw1znR83CAUUhcY2
   DATA_PIPELINE_OEE_CLIENT_ID: 930f8229-ab1b-4aa4-8457-1a1f9a558444
   DATA_PIPELINE_OEE_CLIENT_SECRET: ${{ secrets.DATA_PIPELINE_OEE_CLIENT_SECRET }}
   ICAPI_EXTRACTORS_CLIENT_ID: 650bddf7-59c1-4a1e-96fb-e7de6dad7446
@@ -29,6 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
