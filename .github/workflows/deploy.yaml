@@ -51,8 +51,8 @@ jobs:
 
       - name: Build modules
         run: |
-          poetry run cdf-tk build --env=prod
+          poetry run cdf-tk build --env=prod 
 
       - name: Deploy modules
         run: |
-          poetry run cdf-tk deploy --env=prod
+          poetry run cdf-tk deploy --env=prod --verbose
