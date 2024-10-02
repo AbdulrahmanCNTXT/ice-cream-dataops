@@ -11,7 +11,7 @@ env:
   CDF_PROJECT: cdf-bootcamp-10-prod
   LOGIN_FLOW: client_credentials
   CDF_CLUSTER: westeurope-1
-  IDP_CLIENT_ID: 2e8bcba2-c36f-47ab-91c4-5ac5bb2e724c
+  IDP_CLIENT_ID: ac72ca50-0b5e-4e9d-af8c-9203cbdd900f
   IDP_CLIENT_SECRET: ${{ secrets.IDP_CLIENT_SECRET }}
   # IDP_CLIENT_SECRET: gym8Q~BGR71jFRr.ZvwlT6wJqw1znR83CAUUhcY2
   DATA_PIPELINE_OEE_CLIENT_ID: 930f8229-ab1b-4aa4-8457-1a1f9a558444
