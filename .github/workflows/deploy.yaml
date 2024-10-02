@@ -45,13 +45,13 @@ jobs:
       - name: Install project
         run: poetry install --no-interaction
 
-      - name: Build modules
-        run: |
-          poetry run cdf-tk build --env=prod
-
       - name: CDF verify Auth
         run: |
           poetry run cdf-tk auth verify --no-prompt
+
+      - name: Build modules
+        run: |
+          poetry run cdf-tk build --env=prod
 
       - name: Deploy modules
         run: |
